@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         calculatorViewController.zeroButton.addTarget(self, action: #selector(numberTapped(_:)), for: .touchUpInside)
         calculatorViewController.nineButton.addTarget(self, action: #selector(numberTapped(_:)), for: .touchUpInside)
         
-        //calculator operation
+        //нажатие operation
         
         calculatorViewController.plusMinusButton.addTarget(self, action: #selector(operationTapped(_:)), for: .touchUpInside)
         calculatorViewController.percentButton.addTarget(self, action: #selector(operationTapped(_:)), for: .touchUpInside)
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         actualOperation = nil
         firstNum = 0
     }
-    
+    // нажатие цифр
     @objc func numberTapped(_ sender: UIButton) {
         if let value = calculatorViewController.buttonValues[sender] {
             if calculatorViewController.numberLabel.text == "0" || operationTapped {
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+    // выполнение операции при нажатии
     @objc func operationTapped(_ sender: UIButton) {
         if let value = calculatorViewController.buttonValues[sender] {
             if let text = calculatorViewController.numberLabel.text, let doubleValue = Double(text.replacingOccurrences(of: ",", with: ".")) {
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
+        // обнуление лейбла, возвращение 
         func removeZero(from number: Double) -> String {
             let numberReset = NumberFormatter()
             numberReset.minimumFractionDigits = 0
